@@ -14,7 +14,7 @@ www-test/
 .apt_generated/
 
 # application data
-war/data/
+sowpods_3_5.txt
 
 # more caches and things from deploy #
 war/WEB-INF/deploy/
