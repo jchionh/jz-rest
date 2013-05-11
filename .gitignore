@@ -5,21 +5,21 @@
 *.war
 
 # gwt caches and compiled units #
-war/[gwt project name]/
-gwt-unitCache/
-test-classes/
-www-test/
+jz-rest/war/[gwt project name]/
+jz-rest/gwt-unitCache/
+jz-rest/test-classes/
+jz-rest/www-test/
 
 # boilerplate generated classes #
-.apt_generated/
+jz-rest/apt_generated/
 
 # application data
-sowpods_3_5.txt
+jz-rest/war/data/
 
 
 # more caches and things from deploy #
-war/WEB-INF/deploy/
-war/WEB-INF/classes/
+jz-rest/war/WEB-INF/deploy/
+jz-rest/war/WEB-INF/classes/
 
 # App engine generated #
-war/WEB-INF/appengine-generated/
+jz-rest/war/WEB-INF/appengine-generated/
