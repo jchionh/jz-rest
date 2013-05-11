@@ -26,14 +26,13 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
  * @author jchionh
  */
 @SuppressWarnings("serial")
-public class WordDictServlet extends HttpServlet {
+public class WordDictServletJSON extends HttpServlet {
 
-    private static final String POSITIVE_RESPONSE = "1";
-    private static final String NEGATIVE_RESPONSE = "0";
     private static final String DELIMITER = "/";
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String responseString = NEGATIVE_RESPONSE;
+        boolean found = false;
+        long startTime = System.nanoTime();
         // get our path info so we can tokenize for CRUD
         String pathInfo = req.getPathInfo();
         // just get the first word
@@ -47,12 +46,13 @@ public class WordDictServlet extends HttpServlet {
                 Query q = new Query(WordDictPopulator.DS_KIND, wordKey);
                 List<Entity> resultWords = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
                 if (resultWords.size() > 0) {
-                    responseString = POSITIVE_RESPONSE;
+                    found = true;
                 }
             }
         }
+        long totalTime = (System.nanoTime() - startTime) / 1000000;
         // write our output
         resp.setContentType("text/plain");
-        resp.getWriter().print(responseString);
+        resp.getWriter().print(WordDictQueryResponse.formatJSONString(found, totalTime));
     }
 }

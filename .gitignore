@@ -13,6 +13,9 @@ www-test/
 # boilerplate generated classes #
 .apt_generated/
 
+# application data
+war/data/
+
 # more caches and things from deploy #
 war/WEB-INF/deploy/
 war/WEB-INF/classes/

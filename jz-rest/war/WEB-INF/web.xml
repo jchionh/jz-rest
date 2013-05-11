@@ -25,6 +25,28 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/wdict/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- here's the word dict lookup rest service JSON -->
+	<servlet>
+		<servlet-name>WordDictJSON</servlet-name>
+		<servlet-class>com.appspot.jzrest.WordDictServletJSON</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WordDictJSON</servlet-name>
+		<url-pattern>/wdictJSON/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- here's the word dict poplation datastore service -->
+	<!-- datastore is populated, do not need to wire in the service 
+	<servlet>
+		<servlet-name>WordDictPrePopulate</servlet-name>
+		<servlet-class>com.appspot.jzrest.WordDictPrePopulateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WordDictPrePopulate</servlet-name>
+		<url-pattern>/wdictpp/*</url-pattern>
+	</servlet-mapping>
+	-->
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
