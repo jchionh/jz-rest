@@ -4,14 +4,27 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+    <!--  here's the simple plain generic jz rest class -->
 	<servlet>
 		<servlet-name>Jz_rest</servlet-name>
 		<servlet-class>com.appspot.jzrest.Jz_restServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Jz_rest</servlet-name>
-		<url-pattern>/jz_rest</url-pattern>
+		<url-pattern>/jz_rest/*</url-pattern>
 	</servlet-mapping>
+	
+	<!-- here's the word dict lookup rest service -->
+	<servlet>
+		<servlet-name>WordDict</servlet-name>
+		<servlet-class>com.appspot.jzrest.WordDictServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WordDict</servlet-name>
+		<url-pattern>/wdict/*</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
