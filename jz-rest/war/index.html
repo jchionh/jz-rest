@@ -9,18 +9,49 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Hello App Engine</title>
+    <title>Jz Rest Web Services</title>
   </head>
 
   <body>
-    <h1>Hello App Engine!</h1>
+    <h1>Jz Rest Web Services</h1>
 	
     <table>
       <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
+        <td colspan="4" style="font-weight:bold;">Available Servlets:</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td> 
+        <td>&nbsp;</td>     
       </tr>
+      
       <tr>
-        <td><a href="jz_rest">Jz_rest</a></td>
+        <td valign="top" align="right"><a href="wdict">Word Dict Lookup</a></td>
+        <td>&nbsp;</td>
+        <td valign="top">&nbsp;--&nbsp;</td>
+        <td valign="top">
+        Lookup service for valid English words of length 3 to 5 letters.<br>
+        Example Usage: <a href="wdict/cat">wdict/cat</a><br>
+        Returns: 0 (not a valid word), 1 (valid word)<br>
+        &nbsp;<br>
+        </td>
+      </tr>
+      
+      <tr>
+        <td valign="top" align="right"><a href="wdictJSON">Word Dict Lookup (JSON format)</a></td>
+        <td>&nbsp;</td>
+        <td valign="top">&nbsp;--&nbsp;</td>
+        <td valign="top">
+        Same service as Word Dict Lookup, except the return result is in JSON format.<br>
+        Example Usage: <a href="wdictJSON/cat">wdictJSON/cat</a><br>
+        Returns: { "r":"0", "t":"11"} -- r for result, t for query time in milliseconds.<br>
+        &nbsp;<br>
+        </td>
+      </tr>
+      
+      <tr>
+        <td valign="top" align="right"><a href="jz_rest">Jz_rest</a></td>
+        <td>&nbsp;</td>
+        <td valign="top">&nbsp;--&nbsp;</td>
+        <td valign="top">a Simple Hello World test service.</td>
       </tr>
     </table>
   </body>

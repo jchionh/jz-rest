@@ -17,9 +17,9 @@ public class Jz_restServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
 
-        String pathinfo = req.getPathInfo();
+        //String pathinfo = req.getPathInfo();
 
         resp.setContentType("text/plain");
-        resp.getWriter().println("Hello, world. " + pathinfo);
+        resp.getWriter().println("Hello, world. ");
     }
 }

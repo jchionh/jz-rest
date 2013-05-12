@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.appspot.jzrest.util.WordDictPopulator;
-import com.appspot.jzrest.util.WordDictQueryResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -17,8 +16,6 @@ import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.Filter;
-import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 /**
  * simple word dict lookup.
@@ -28,17 +25,13 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 @SuppressWarnings("serial")
 public class WordDictServlet extends HttpServlet {
 
-    private static final String POSITIVE_RESPONSE = "1";
-    private static final String NEGATIVE_RESPONSE = "0";
-    private static final String DELIMITER = "/";
-
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String responseString = NEGATIVE_RESPONSE;
+        String responseString = ServletConstants.NEGATIVE_RESPONSE;
         // get our path info so we can tokenize for CRUD
         String pathInfo = req.getPathInfo();
         // just get the first word
         if (pathInfo != null) {
-            StringTokenizer stk = new StringTokenizer(pathInfo, DELIMITER);
+            StringTokenizer stk = new StringTokenizer(pathInfo, ServletConstants.DELIMITER);
             if (stk.hasMoreTokens()) {
                 String word = stk.nextToken().toUpperCase();
                 // test query the datastore
@@ -47,9 +40,11 @@ public class WordDictServlet extends HttpServlet {
                 Query q = new Query(WordDictPopulator.DS_KIND, wordKey);
                 List<Entity> resultWords = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
                 if (resultWords.size() > 0) {
-                    responseString = POSITIVE_RESPONSE;
+                    responseString = ServletConstants.POSITIVE_RESPONSE;
                 }
             }
+        } else {
+            responseString = ServletConstants.USAGE;
         }
         // write our output
         resp.setContentType("text/plain");
