@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /jz_rest/
+Disallow: /wdict/
+Disallow: /wdictJSON/
